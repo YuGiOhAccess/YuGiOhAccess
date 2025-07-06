@@ -1,6 +1,3 @@
-import time
-import threading
-import cyal
 
 import wx
 from ui.base_ui import VerticalMenu, InputUI, StatusMessage
