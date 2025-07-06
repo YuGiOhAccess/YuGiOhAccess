@@ -65,7 +65,7 @@ def run_velopack():
         update_manager = velopack.UpdateManager(url)
     except Exception as e:
         logger.error(f"Failed to initialize UpdateManager: {e}")
-    return
+        return
     update_info = update_manager.check_for_updates()
     if not update_info:
         logger.info("No updates available")
