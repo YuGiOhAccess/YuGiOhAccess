@@ -90,7 +90,7 @@ jobs:
       - name: install vpk
         run: dotnet tool install -g vpk
       - name: Download old release
-        run: vpk download github --repoUrl https://github.com/${{ github.repository }}
+        run: vpk download github --repoUrl https://github.com/${{ github.repository }} --token ${{ secrets.GITHUB_TOKEN }}
       - name: Pack new release (Windows)
         if: runner.os == 'Windows'
         run: vpk pack --packDir dist/YuGiOhAccess --mainExe YuGiOhAccess.exe --packId "${{ env.VPK_PACK_ID }}" --packVersion "${{ env.VPK_PACK_VERSION }}" --packTitle "${{ env.VPK_PACK_TITLE }}" --packAuthors "${{ env.VPK_PACK_AUTHORS }}"
