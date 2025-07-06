@@ -11,6 +11,7 @@ import re
 from functools import wraps
 
 import requests
+import urllib
 import velopack
 import wx
 
@@ -48,8 +49,21 @@ def run_velopack():
     logger.info("Running Velopack application")
     velopack.App().run()
     update_manager = None
+    url = None
     try:
-        update_manager = velopack.UpdateManager("https://github.com/YuGiOhAccess/YuGiOhAccess")
+        logger.debug("Fetching the latest version URL from GitHub")
+        response = urllib.request.urlopen("https://github.com/YuGiOhAccess/YuGiOhAccess/releases/latest/")
+        version_url_frags = response.url.split("/")
+        version = version_url_frags[-1]
+        url = f"https://github.com/YuGiOhAccess/YuGiOhAccess/releases/download/{version}/"
+        logger.info(f"Latest version URL: {url}")
+    except urllib.error.HTTPError:
+        logger.error("Failed to get the latest version URL from GitHub")
+        return
+
+    try:
+        logger.info("Initializing UpdateManager")
+        update_manager = velopack.UpdateManager(url)
     except Exception as e:
         logger.error(f"Failed to initialize UpdateManager: {e}")
     return
