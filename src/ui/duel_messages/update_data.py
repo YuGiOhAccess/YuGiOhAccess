@@ -128,7 +128,7 @@ def parse_queries(client, controller, location, size, data):
                 card_code = client.read_u32(data)
                 query.overlay_cards.append(card_code)
         if flags & card_constants.QUERY.COUNTERS:
-            counters_size = client.read_u16(data)
+            _ = client.read_u16(data)
             query.counters_count = client.read_u32(data)
             query.counters = []
             for _ in range(query.counters_count):

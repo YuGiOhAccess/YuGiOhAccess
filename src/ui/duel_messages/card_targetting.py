@@ -2,7 +2,6 @@ import io
 import logging
 
 from core import utils
-from core import variables
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,6 @@
 import io
 
 from core import utils
-from core import variables
 
 @utils.duel_message_handler(93)
 def msg_equip(client, data, data_length):

@@ -19,7 +19,8 @@ def win(client, player, reason):
         utils.output("You and your opponent ended the duel in a draw.")
         return
 
-    l_reason = lambda: variables.LANGUAGE_HANDLER.strings['victory'][reason]
+    def l_reason():
+        return variables.LANGUAGE_HANDLER.strings['victory'][reason]
 
     if player == client.what_player_am_i:
         utils.output("You win the duel! %s" % l_reason())

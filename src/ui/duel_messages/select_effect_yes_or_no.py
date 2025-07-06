@@ -2,7 +2,6 @@ import io
 import struct
 
 from game.card.card import Card
-from game.card.location_conversion import LocationConversion
 from game.edo import structs
 
 from core import utils

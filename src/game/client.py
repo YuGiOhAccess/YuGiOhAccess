@@ -1,10 +1,8 @@
-from pathlib import Path
 import re
 import time
 import threading
 import logging
 import struct
-import ctypes
 from datetime import datetime
 
 import wx
@@ -223,7 +221,7 @@ class Client:
                     card.data = self.read_u8(data)
                 else:
                     card.data = self.read_u64(data)
-                    client_mode = self.read_u8(data)
+                    _ = self.read_u8(data) # client_mode
 
             res.append(card)
         return res

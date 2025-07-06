@@ -1,7 +1,6 @@
 import io
 
 from core import utils
-from core import variables
 
 @utils.duel_message_handler(3)
 def msg_waiting(client, data, length):

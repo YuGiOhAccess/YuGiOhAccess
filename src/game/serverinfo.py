@@ -26,7 +26,7 @@ class EdoServerInformation:
     def is_available(self, unknown):
         try:
             self.room_session.head(f"http://{self.resolve_hostname_to_ip()}:{self.room_listing_port}", timeout=1)
-            with socket.create_connection((self.resolve_hostname_to_ip(), self.lobby_port), timeout=1) as s:
+            with socket.create_connection((self.resolve_hostname_to_ip(), self.lobby_port), timeout=1):
                 return True
         except requests.exceptions.RequestException:
             return False

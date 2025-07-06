@@ -1,6 +1,5 @@
 from enum import IntFlag, unique
 
-from core import variables
 
 ATTRIBUTES_OFFSET = 1010
 RACES_OFFSET = 1020

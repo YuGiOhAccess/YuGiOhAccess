@@ -2,7 +2,6 @@ import logging
 import threading
 import concurrent.futures
 
-import requests
 import wx
 from core import utils
 from core import variables

@@ -7,10 +7,10 @@ from game.edo import structs
 
 from core import utils
 from core import variables
+from ui.base_ui import VerticalMenu
+
 
 logger = logging.getLogger(__name__)
-
-from ui.base_ui import VerticalMenu
 
 
 @utils.duel_message_handler(13)
@@ -24,7 +24,7 @@ def msg_select_yesno(client, data, data_length):
 def select_yes_no(client, player, desc):
     code = desc >> 20
     stringid = desc & 0xfffff
-    logger.debug(f"Selecting yes or no")
+    logger.debug("Selecting yes or no")
     logger.debug(f"Player id: {player}")
     logger.debug(f"Code: {code}")
     logger.debug(f"String id: {stringid}")

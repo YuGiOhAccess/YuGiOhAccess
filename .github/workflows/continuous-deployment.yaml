@@ -37,6 +37,8 @@ jobs:
       - name: Install dependencies
         run: uv sync
         if: steps.cached-uv-dependencies.outputs.cache-hit != 'true'
+      - name: Lint with ruff
+        run: uv run ruff check
       - name: Run tests
         run: uv run pytest
       - name: Build application

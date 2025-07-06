@@ -3,7 +3,6 @@ import io
 from core import utils
 
 from game.card.card import Card
-from game.card import card_constants
 
 @utils.duel_message_handler(70)
 def msg_chaining(client, data, data_length):

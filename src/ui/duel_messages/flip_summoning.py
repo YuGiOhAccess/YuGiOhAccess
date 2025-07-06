@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 @utils.duel_message_handler(64)
 def msg_flipsummoning(client, data, data_length):
     data = io.BytesIO(data[1:])
-    code = client.read_u32(data)
+    _ = client.read_u32(data) # card code
     controller, location, sequence, position = client.read_location(data)
     card = client.get_card(controller, location, sequence)
     flipsummoning(client, card, controller, location, sequence, position)

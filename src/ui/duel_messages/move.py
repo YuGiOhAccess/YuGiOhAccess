@@ -63,7 +63,7 @@ class Message(IntFlag):
     OPPONENT = 0x2
 
 def get_message_to_announce(client, card, cnew, reason):
-    old_location_information = LocationConversion.from_card_location(client, card)
+    old_location_information = LocationConversion.from_card_location(client, card)  # noqa: F841
     new_card_information = LocationConversion.from_card_location(client, cnew)
     if reason & card_constants.REASON.DESTROY and card.location != cnew.location:
         utils.get_ui_stack().play_duel_sound_effect("destroy")

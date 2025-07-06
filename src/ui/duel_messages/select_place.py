@@ -14,10 +14,11 @@ def msg_select_place(client, data, data_len):
     global selected_zones
     selected_zones = []
     data = io.BytesIO(data)
-    msg = client.read_u8(data)
+    _ = client.read_u8(data)
     player = client.read_u8(data)
     count = client.read_u8(data)
-    if count == 0: count = 1
+    if count == 0:
+        count = 1
     flag = client.read_u32(data)
     select_place(client, player, count, flag)
 

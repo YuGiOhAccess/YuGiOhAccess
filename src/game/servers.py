@@ -8,7 +8,7 @@ class TestingServer(EdoServerInformation):
 class EUCasualServer(EdoServerInformation):
     def __init__(self):
         super().__init__("EU Central (Casual)", "eu.projectignis.org", 7923, 7912)
-"""
+
 class EUCompetitiveServer(EdoServerInformation):
     def __init__(self):
         super().__init__("EU Central (Competitive)", "http://eu.projectignis.org:7922", "eu.projectignis.org:7911")
@@ -24,7 +24,6 @@ class USCompetitiveServer(EdoServerInformation):
 class AsiaServer(EdoServerInformation):
     def __init__(self):
         super().__init__("Asia Central (Casual/Competitive)", "https://ignis-room.ygopro.cn:443", "ignis-duel.ygopro.cn:44444")
-"""
+
 def get_servers():
-    #return [TestingServer(), EUCasualServer(), EUCompetitiveServer(), USCasualServer(), USCompetitiveServer(), AsiaServer()]
-    return [TestingServer()]
+    return [TestingServer(), EUCasualServer(), EUCompetitiveServer(), USCasualServer(), USCompetitiveServer(), AsiaServer()]

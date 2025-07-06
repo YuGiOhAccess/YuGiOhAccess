@@ -1,7 +1,6 @@
 import io
 import time
 
-import wx
 
 from core import utils
 from game.player import Player

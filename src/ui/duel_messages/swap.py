@@ -1,7 +1,6 @@
 import io
 
 from game.card.card import Card
-from game.card import card_constants
 from game.card.location_conversion import LocationConversion
 
 from core import utils

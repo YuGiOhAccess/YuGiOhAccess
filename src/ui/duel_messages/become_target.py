@@ -8,7 +8,7 @@ from core import variables
 @utils.duel_message_handler(83)
 def msg_become_target(client, data, data_length):
     data = io.BytesIO(data[1:])
-    size = client.read_u32(data)
+    _ = client.read_u32(data)
     target_controller, target_location, target_sequence, target_position = client.read_location(data)
     become_target(client, target_controller, target_location, target_sequence, target_position)
 

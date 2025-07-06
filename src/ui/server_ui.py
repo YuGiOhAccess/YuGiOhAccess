@@ -1,6 +1,5 @@
 import wx
 import logging
-from pathlib import Path
 from core import utils
 from game.servers import get_servers
 from ui.base_ui import InputUI, StatusMessage, VerticalMenu, WaitUI, NumberInputUI
