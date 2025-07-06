@@ -11,14 +11,13 @@ dependencies = [
     "pyinstaller>=6.10",
     "requests>=2.32",
     "soundfile>=0.12",
-    "tufup>=0.9.0",
     "wxpython>=4.2",
     "appscript>=1.2; sys_platform == 'darwin'",
     "pyobjc>=10.3; sys_platform == 'darwin'",
     "winpaths; sys_platform == 'win32'",
     "accessible-output3>=0.1.2",
-    "pypresence>=4.3.0",
-    "velopack>=0.0.1350.dev15267",
+    "pypresence>=4.3",
+    "velopack>=0.0.1349",
 ]
 
 [tool.uv]
