@@ -37,8 +37,8 @@ def handle_error_msg(client, packet_data, packet_length):
         return handle_deck_error(client, m)
 
 def handle_error(client, message):
-    logger.error(str(message))
-    utils.output(str(message))
+    if message.msg == 5:
+        utils.output("Invalid version. Please update the game, or contact support if the issue persists.")
     
 def handle_deck_error(client, message):
     logger.error(str(message))

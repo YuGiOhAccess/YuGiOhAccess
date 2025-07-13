@@ -99,6 +99,8 @@ def banlist_change_choice(event, choicer):
 def create_room_on_server(server, room_settings):
     logger.debug(f"Creating room with settings {room_settings} on {server}")
     c = Client.create_room(server, room_settings)
+    if not c:
+        return
     logger.debug(f"Created room {c}")
     # store the password in memory if we need it later
     if room_settings["password"]:

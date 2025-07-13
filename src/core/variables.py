@@ -49,8 +49,8 @@ config = config.Config({
 LANGUAGE_HANDLER = None
 DISCORD_PRESENCE_MANAGER = None
 edo_client_version = structs.ClientVersion(
-    (ctypes.c_uint8 * 2)(*([40, 1])),
-    (ctypes.c_uint8 * 2)(*([10, 0]))
+    (ctypes.c_uint8 * 2)(*([41, 0])),
+    (ctypes.c_uint8 * 2)(*([11, 0]))
 )
 
 DISCORD_APPLICATION_INFO = dotdict.DotDict()

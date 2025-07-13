@@ -44,6 +44,7 @@ class GameSocket:
         id = data[2]
         packet_data = data[3:length+2]
         extra = data[length+2:]
+        length = length -1 # subtract 1 for the id byte
         self.buf.truncate(0)
         self.buf.seek(0)
         self.buf.write(extra)

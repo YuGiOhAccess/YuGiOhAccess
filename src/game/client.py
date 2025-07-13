@@ -130,7 +130,10 @@ class Client:
         c.send(structs.ClientIdType.JOIN_GAME, join_game_packet)
         packet_id, packet_length, packet_data = c.wait_for_packet(structs.ServerIdType.JOIN_GAME)
         if packet_id == structs.ServerIdType.ERROR_MSG:
-            return
+            func = utils.packet_handlers.get(structs.ServerIdType.ERROR_MSG, None)
+            if func:
+                wx.CallAfter(func, None, packet_data, packet_length)
+            return None
         structs.StocJoinGame.from_buffer_copy(packet_data)
         c.room_id = room_id
         return c
@@ -167,6 +170,12 @@ class Client:
         )
         c.send(structs.ClientIdType.CREATE_GAME, create_game_packet)
         packet_id, packet_length, packet_data = c.wait_for_packet(structs.ServerIdType.CREATE_GAME)
+        if packet_id == structs.ServerIdType.ERROR_MSG:
+            logger.error("Error while creating room.")
+            func = utils.packet_handlers.get(structs.ServerIdType.ERROR_MSG, None)
+            if func:
+                wx.CallAfter(func, None, packet_data, packet_length)
+            return None
         result = structs.StocCreateGame.from_buffer_copy(packet_data)
         c.room_id = result.id
         # add the banlist to memory

@@ -205,6 +205,7 @@ class StocChat2(ctypes.Structure):
 class ErrorMSG(ctypes.Structure):
     _fields_ = [
         ("msg", ctypes.c_uint8),
+        ("pad", ctypes.c_uint8),
         ("code", ctypes.c_uint32),
     ]
 

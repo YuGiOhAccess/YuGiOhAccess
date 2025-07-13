@@ -286,17 +286,28 @@ def _should_redownload_repo(url, local_path):
         last_downloaded_date = last_downloaded_file.read_text()
     github_api_url = f"https://api.github.com/repos/{url}"
     # get the "updated_at" date from the github api
-    response = requests.get(github_api_url)
-    response.raise_for_status()
-    response = response.json()
-    updated_at = response["updated_at"]
+    try:
+        response = requests.get(github_api_url)
+        response.raise_for_status()
+        response = response.json()
+        updated_at = response["updated_at"]
     # if the updated_at is newer than the last_downloaded, we should download it
-    if updated_at != last_downloaded_date:
-        logger.debug(f"Local path {local_path} has an outdated version, should download. Old version: {last_downloaded_date}, new version: {updated_at}")
-        return True, updated_at
+        if updated_at != last_downloaded_date:
+            logger.debug(f"Local path {local_path} has an outdated version, should download. Old version: {last_downloaded_date}, new version: {updated_at}")
+            return True, updated_at
+    except requests.HTTPError as e:
+        # if the status code is 403, it means we are rate limited, so skip updating
+        if e.response.status_code == 403:
+            logger.warning(f"Rate limited while trying to access {github_api_url}. Skipping update.")
+            return False, last_downloaded_date
+    except requests.RequestException as e:
+        logger.error(f"Failed to get the updated_at date from GitHub API: {e}")
+        # if we can't get the updated_at date, we should download it
+        logger.debug(f"Local path {local_path} is not valid, should download")
+        return True, ""
     # if we got here, we should not download it
     logger.debug(f"Local path {local_path} is up to date, should not download")
-    return False, None
+    return False, last_downloaded_date
 
 def _download_repo(url, local_path, updated_at):
     logger = logging.getLogger(__name__)
